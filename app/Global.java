@@ -44,6 +44,7 @@ public class Global extends GlobalSettings {
 	}
 	
 	private void criaDisciplinaTemas(){
+		//Disciplina: Sistemas de Informação 1
 		Disciplina si1 = new Disciplina("Sistemas de Informação 1");
 		si1.addTema(new Tema("Análise x Design"));
 		si1.addTema(new Tema("Orientação a objetos"));
@@ -59,9 +60,25 @@ public class Global extends GlobalSettings {
 		si1.addTema(new Tema("Projeto"));
 		dao.persist(si1);
 		dao.flush();
+
+		//Disciplina: Lógica Matemática
+		Disciplina logica = new Disciplina("Lógica Matemática");
+		logica.addTema(new Tema("Lógica Proposicional (LP)"));
+		logica.addTema(new Tema("Semântica (LP)"));
+		logica.addTema(new Tema("Argumentos (LP)"));
+		logica.addTema(new Tema("Tableaux Semântico"));
+		logica.addTema(new Tema("Dedução (LP)"));
+		logica.addTema(new Tema("Formas Normais"));
+		logica.addTema(new Tema("SAT Solvers"));
+		logica.addTema(new Tema("Lógica de Predicados (Pred)"));
+		logica.addTema(new Tema("Semântica (Pred)"));
+		logica.addTema(new Tema("Dedução (Pred)"));
+		logica.addTema(new Tema("Lógica Temporal"));
+		logica.addTema(new Tema("Model Checking"));
+		logica.addTema(new Tema("Alloy"));
 	}
 
 	private void criaUsuarios() {
-		
+
 	}
 }
