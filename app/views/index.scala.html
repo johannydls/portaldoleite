@@ -1,10 +1,11 @@
-@(disciplinas: List[Disciplina])
+@(disciplinas: List[Disciplina])(usuarios: List[User])
+@import java.math.BigInteger; var i=0
 
 <!DOCTYPE html>
 
 <html>
     <head>
-        <title>Tema</title>
+        <title>Portal do Leite</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/portalDoLeite_uikit.css")">
@@ -46,7 +47,7 @@
             		</div>
             	</div>
             	<!-- ---------------- MAIN CONTENT ---------------- -->
-            	<div class="uk-width-medium-3-4">
+            	<div class="uk-width-medium-2-4">
             		<div class="uk-panel uk-panel-box">
             			<div class="uk-article">
 	            				<h1>Bem-vindo(a) ao Portal do Leite!</h1>
@@ -56,7 +57,83 @@
             			</div>
             			<p>Escolha uma disciplina ou tema ao lado para acessar os leites.</p>
             		</div>
-            	</div>
+
+					<div class="uk-panel uk-panel-box">
+					@for(disciplina <- disciplinas){
+
+						@if(disciplina != null){
+
+							<!--Acessando os Temas-->
+							@for(tema <- disciplina.getTemas()){
+
+							<!--Acessando as Dicas-->
+							@for(dica <- tema.getDicas()){
+								@if(i < 10) {
+									<br>
+									<div class="uk-panel uk-panel-box dica" data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}">
+
+										<h3>@disciplina.getNome()</h3>
+
+											<div>
+												<a class="uk-article-meta uk-text-success">
+													Tema: <strong>"@tema.getName()"</strong>
+												</a>
+
+												<div class="uk-button-dropdown uk-align-right" data-uk-dropdown="{mode:'click'}">
+													<button class="uk-button uk-button-primary uk-button uk-align-right"><i class="uk-icon-plus"></i>
+														detalhes
+													</button>
+												</div>
+
+											</div>
+											<hr class="uk-article-divider-orange">
+										<strong>
+											@if(dica.getTipo().equals("DicaDisciplina")){
+												<p>Disciplinas importantes:</p><p class="normal-font">@dica.getTexto()</p>
+												<p>Razão:</p><p class="normal-font">@dica.getInstanciaDisciplina.getRazao()</p>
+											}
+											@if(dica.getTipo().equals("DicaMaterial")){
+												<p>Link para material útil:</p><a href="@dica.getTexto()">@dica.getTexto()</a>
+											}
+											@if(dica.getTipo().equals("DicaConselho")){
+												<p>Conselho:</p><p class="normal-font">@dica.getTexto()</p>
+											}
+											@if(dica.getTipo().equals("DicaAssunto")){
+												<p>Assuntos importantes:</p><p class="normal-font">@dica.getTexto()</p>
+											}
+										</strong>
+
+										<p class="uk-article-meta uk-text-right">por @dica.getUser()</p>
+									</div>
+									<hr class="uk-article-divider">
+									@(i += 1)
+								}
+
+							}
+						}
+
+						}else{
+							<p>Nenhuma dica cadastrada!</p>
+						}
+					}
+					</div><br>
+				</div>
+					<!-- ---------------- USUARIOS ---------------- -->
+				<div class="uk-width-medium-1-4">
+					<div class="uk-panel uk-panel-box">
+						<div class="uk-panel-header">
+							<h3 class="uk-panel-title center">Usuários cadastrados</h3>
+						</div>
+						<ul class="uk-nav uk-nav-side center">
+							<li class="uk-divider">
+							@for(usuario <- usuarios){
+								<li class="uk-nav-header"><a>@usuario.getNome()</a></li>
+							}
+							</li>
+						</ul>
+					</div>
+				</div>
+
             </div>
         </div>
     </body>
