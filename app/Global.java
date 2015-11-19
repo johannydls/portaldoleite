@@ -60,4 +60,8 @@ public class Global extends GlobalSettings {
 		dao.persist(si1);
 		dao.flush();
 	}
+
+	private void criaUsuarios() {
+		
+	}
 }
