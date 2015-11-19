@@ -3,6 +3,7 @@ import java.util.List;
 
 import models.Disciplina;
 import models.Tema;
+import models.User;
 import models.dao.GenericDAOImpl;
 import play.Application;
 import play.GlobalSettings;
@@ -14,6 +15,7 @@ public class Global extends GlobalSettings {
 
 	private static GenericDAOImpl dao = new GenericDAOImpl();
 	private List<Disciplina> disciplinas = new ArrayList<>();
+	private List<User> usuarios = new ArrayList<>();
 	
 	@Override
 	public void onStart(Application app) {
@@ -25,6 +27,10 @@ public class Global extends GlobalSettings {
 				if(dao.findAllByClassName(Disciplina.class.getName()).size() == 0){
 					criaDisciplinaTemas();
 				}
+
+				if(dao.findAllByClassName(User.class.getName()).size() == 0) {
+					criaUsuarios();
+				}
 			}
 		});
 	}
@@ -35,11 +41,19 @@ public class Global extends GlobalSettings {
 	    @Override
 	    public void invoke() throws Throwable {
 	        Logger.info("Aplicação finalizando...");
-	        disciplinas = dao.findAllByClassName("Disciplina");
+
+			disciplinas = dao.findAllByClassName("Disciplina");
 
 	        for (Disciplina disciplina: disciplinas) {
-	        dao.removeById(Disciplina.class, disciplina.getId());
-	       } 
+				dao.removeById(Disciplina.class, disciplina.getId());
+			}
+
+			usuarios = dao.findAllByClassName("User");
+
+			for (User usuario: usuarios) {
+				dao.removeById(User.class, usuario.getId());
+			}
+
 	    }}); 
 	}
 	
@@ -59,7 +73,6 @@ public class Global extends GlobalSettings {
 		si1.addTema(new Tema("Minitestes"));
 		si1.addTema(new Tema("Projeto"));
 		dao.persist(si1);
-		dao.flush();
 
 		//Disciplina: Lógica Matemática
 		Disciplina logica = new Disciplina("Lógica Matemática");
@@ -77,7 +90,6 @@ public class Global extends GlobalSettings {
 		logica.addTema(new Tema("Model Checking"));
 		logica.addTema(new Tema("Alloy"));
 		dao.persist(logica);
-		dao.flush();
 
 		//Disciplina: Teoria da Computação
 		Disciplina tc = new Disciplina("Teoria da Computação");
@@ -89,11 +101,24 @@ public class Global extends GlobalSettings {
 		tc.addTema(new Tema("Decidibilidade"));
 		tc.addTema(new Tema("Redução (mapping e Turing)"));
 		dao.persist(tc);
+
 		dao.flush();
 
 	}
 
 	private void criaUsuarios() {
 
+		for (int i = 1; i <= 10; i++) {
+			String nome = "Usuario " + i;
+			String email = "usuario" + i + "@ccc.ufcg.edu.br";
+			String nick = "usuario" + i;
+			String pass = "12345";
+
+			User usuario = new User(email, pass, nick);
+			usuario.setNome(nome);
+			dao.persist(usuario);
+		}
+
+		dao.flush();
 	}
 }
