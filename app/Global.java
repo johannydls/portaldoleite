@@ -76,6 +76,21 @@ public class Global extends GlobalSettings {
 		logica.addTema(new Tema("Lógica Temporal"));
 		logica.addTema(new Tema("Model Checking"));
 		logica.addTema(new Tema("Alloy"));
+		dao.persist(logica);
+		dao.flush();
+
+		//Disciplina: Teoria da Computação
+		Disciplina tc = new Disciplina("Teoria da Computação");
+		tc.addTema(new Tema("Linguagens Regulares"));
+		tc.addTema(new Tema("Autômatos Finitos"));
+		tc.addTema(new Tema("Linguagens Livre-de-contexto"));
+		tc.addTema(new Tema("Autômatos de Pilha"));
+		tc.addTema(new Tema("Máquina de Turing"));
+		tc.addTema(new Tema("Decidibilidade"));
+		tc.addTema(new Tema("Redução (mapping e Turing)"));
+		dao.persist(tc);
+		dao.flush();
+
 	}
 
 	private void criaUsuarios() {
