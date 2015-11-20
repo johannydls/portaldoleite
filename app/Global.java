@@ -135,6 +135,14 @@ public class Global extends GlobalSettings {
 		dica5.setUser("usuario4");
 		logica.getTemaByNome("Alloy").addDica(dica5);
 
+		DicaDisciplina dica6 = new DicaDisciplina();
+		dica6.setNomeDisciplina("Matemática Discreta");
+		dica6.setRazao("Essa disciplina aborda algumas partes da lógica proposicional e de predicados. " +
+				"Vale a pena dar uma revisada nos materiais de Matemática Discreta.");
+		dica6.setTema(logica.getTemaByNome("Lógica Proposicional (LP)"));
+		dica6.setUser("usuario8");
+		logica.getTemaByNome("Lógica Proposicional (LP)").addDica(dica6);
+
 		dao.persist(si1);
 		dao.persist(logica);
 		dao.persist(tc);

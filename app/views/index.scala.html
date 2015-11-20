@@ -59,6 +59,8 @@
             		</div>
 
 					<div class="uk-panel uk-panel-box">
+						<h2>Últimas 10 dicas enviadas</h2>
+						<hr class="uk-article-divider">
 					@for(disciplina <- disciplinas){
 
 						@if(disciplina != null){
@@ -79,7 +81,7 @@
 													Tema: <strong>"@tema.getName()"</strong>
 												</a>
 
-												<div class="uk-button-dropdown uk-align-right" data-uk-dropdown="{mode:'click'}">
+												<div class="uk-button-dropdown uk-align-right" data-uk-modal="{target:'#avaliacao-modal'}">
 													<button class="uk-button uk-button-primary uk-button uk-align-right"><i class="uk-icon-plus"></i>
 														detalhes
 													</button>
@@ -108,6 +110,24 @@
 									<hr class="uk-article-divider">
 									@(i += 1)
 								}
+
+								<!-- MODAL DETALHES -->
+								<div id="avaliacao-modal" class="uk-modal">
+									<div class="uk-modal-dialog">
+
+										<a class="uk-modal-close uk-close"></a>
+										<div class="uk-modal-header" style="background-color:#5f5f5f"><h2>Dica da disciplina "@disciplina.getNome()"</h2></div>
+										<div class="uk-article">
+											<h3 class="uk-h3">Tema: @tema.getName()</h3>
+											<hr class="uk-article-divider-orange">
+											<form class="uk-form" method="post" action="/avaliar/@tema.getId()">
+												<div class="uk-form-row">
+													<p><!-- Avalie a dificuldade deste tema: --></p>
+													</div>
+											</form>
+										</div>
+									</div>
+								</div>
 
 							}
 						}
