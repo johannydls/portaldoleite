@@ -1,1 +1,7 @@
-﻿Principais Mudanças realizadas no projeto:
+﻿
+
+=======================================||=======================================
+Adição das Disciplinas e temas
+Cadastro dos usuários
+Adição das dicas
+Dicas e usuarios na front-end
