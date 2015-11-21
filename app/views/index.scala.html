@@ -1,4 +1,4 @@
-@(disciplinas: List[Disciplina])(usuarios: List[User])
+@(disciplinas: List[Disciplina])(usuarios: List[User])(dicas: List[Dica])
 @import java.math.BigInteger; var i=0
 
 <!DOCTYPE html>
@@ -76,24 +76,19 @@
 					<div class="uk-panel uk-panel-box">
 						<h2>Últimas 10 dicas enviadas</h2>
 						<hr class="uk-article-divider">
-					@for(disciplina <- disciplinas){
+					
+				<!-- gerando as dicas na timeline -->
+					@for(dica <- dicas){
 
-						@if(disciplina != null){
-
-							<!--Acessando os Temas-->
-							@for(tema <- disciplina.getTemas()){
-
-							<!--Acessando as Dicas-->
-							@for(dica <- tema.getDicas()){
 								@if(i < 10) {
 									<br>
 									<div class="uk-panel uk-panel-box dica" data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}">
 
-										<h3>@disciplina.getNome()</h3>
+										<h3>@dica.getTema.getDisciplina.getNome()</h3>
 
 											<div>
 												<a class="uk-article-meta uk-text-success">
-													Tema: <strong>"@tema.getName()"</strong>
+													Tema: <strong>"@dica.getTema.getName()"</strong>
 												</a>
 														 <!--Aqui eu tive de editar o botao para tirar a tela suspensa -->
 												<div class="uk-button-dropdown uk-align-right">
@@ -108,7 +103,6 @@
 										<strong>
 											@if(dica.getTipo().equals("DicaDisciplina")){
 												<p>Disciplinas importantes:</p><p class="normal-font">@dica.getTexto()</p>
-												<p>Razão:</p><p class="normal-font">@dica.getInstanciaDisciplina.getRazao()</p>
 											}
 											@if(dica.getTipo().equals("DicaMaterial")){
 												<p>Link para material útil:</p><a href="@dica.getTexto()">@dica.getTexto()</a>
@@ -124,8 +118,10 @@
 										<!-- parte que ira ser mostrada ao clicar do botao +detalhes -->
 										<div class="dica-expandir" style="display: none;">
 											@dica.getUser()<br>
+											@dica.getTema().getDisciplina().getNome()<br>
 											@dica.getConcordancias()<br>
-											@dica.getDiscordancias()
+											@dica.getDiscordancias()<br>
+											
 											
 										</div>
 
@@ -133,14 +129,10 @@
 									</div>
 									<hr class="uk-article-divider">
 									@(i += 1)
-								}
-							}
-						}
-
-						}else{
-							<p>Nenhuma dica cadastrada!</p>
 						}
 					}
+					
+					
 					</div><br>
 				</div>
 					<!-- ---------------- USUARIOS ---------------- -->
@@ -161,5 +153,13 @@
 
             </div>
         </div>
+        
+        @for(dica <- dicas){
+        
+        	@dica.getTexto()
+        	<br>
+        
+        }
+        
     </body>
 </html>
