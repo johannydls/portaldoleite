@@ -24,6 +24,7 @@
  				var link = $(this); 
 				if(link.attr("id").match("btn1"))
  					$(this).parent().parent().parent().closest('div').find('.dica-expandir').toggle("slow");
+ 					$(this).find('.uk-icon-plus').toggleClass("uk-icon-minus");
  		});
  
 	})
@@ -96,8 +97,8 @@
 														detalhes
 														
 													</button>
+													
 												</div>
-
 											</div>
 											<hr class="uk-article-divider-orange">
 										<strong>
