@@ -117,11 +117,14 @@
 										
 										<!-- parte que ira ser mostrada ao clicar do botao +detalhes -->
 										<div class="dica-expandir" style="display: none;">
-											@dica.getUser()<br>
-											@dica.getTema().getDisciplina().getNome()<br>
-											@dica.getConcordancias()<br>
-											@dica.getDiscordancias()<br>
+											<hr class="uk-article-divider-orange">
 											
+										
+										<!-- exemplo de como acessar as classes acima de dica @dica.getTema().getDisciplina().getNome()<br> -->
+											Curtidas: <i class="uk-icon-hover uk-icon-thumbs-up"></i> @dica.getConcordancias()<br>
+											Não Curtidas: <i class="uk-icon-hover uk-icon-thumbs-down"></i> @dica.getDiscordancias()<br>
+											Avaliação da dica: @dica.getIndiceConcordancia()
+		            						
 											
 										</div>
 
