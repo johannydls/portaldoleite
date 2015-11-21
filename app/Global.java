@@ -196,6 +196,9 @@ public class Global extends GlobalSettings {
 		dica.setConselho("Procure sempre fazer uma avaliação");
 		dica.setUser("usuario0");
 		si1.getTemaByNome("Análise x Design").addDica(dica);
+		dica.incrementaConcordancias();
+		dica.incrementaConcordancias();
+		dica.incrementaConcordancias();
 
 		DicaConselho dica1 = new DicaConselho();
 		dica1.setTema(si1.getTemaByNome("Orientação a objetos"));
@@ -209,24 +212,32 @@ public class Global extends GlobalSettings {
 				"Não existem muitos materiais para aprender o Play, mas comece com a documentação");
 		dica2.setUser("usuario2");
 		si1.getTemaByNome("Play").addDica(dica2);
+		dica2.incrementaConcordancias();
 
 		DicaConselho dica3 = new DicaConselho();
 		dica3.setTema(si1.getTemaByNome("Labs"));
 		dica3.setConselho("Faça o máximo que puder aqui, envie tudo, mesmo que você ache que não irá valer nada.");
 		dica3.setUser("usuario3");
 		si1.getTemaByNome("Labs").addDica(dica3);
+		dica3.incrementaDiscordancias();
 
 		DicaMaterial dica4 = new DicaMaterial();
 		dica4.setTema(si1.getTemaByNome("GoF"));
 		dica4.setUrl("http://www.tutorialspoint.com/design_pattern/index.htm");
 		dica4.setUser("usuario5");
 		si1.getTemaByNome("GoF").addDica(dica4);
-
+		dica4.incrementaConcordancias();
+		dica4.incrementaConcordancias();
+		dica4.incrementaConcordancias();
+		dica4.incrementaConcordancias();
+		
 		DicaConselho dica5 = new DicaConselho();
 		dica5.setTema(logica.getTemaByNome("Alloy"));
 		dica5.setConselho("Parece fácil, mas não é. Lembre-se de fazer tudo pensando no Time!");
 		dica5.setUser("usuario4");
 		logica.getTemaByNome("Alloy").addDica(dica5);
+		dica5.incrementaDiscordancias();
+		dica5.incrementaDiscordancias();
 
 		DicaDisciplina dica6 = new DicaDisciplina();
 		dica6.setNomeDisciplina("Matemática Discreta");
@@ -235,7 +246,9 @@ public class Global extends GlobalSettings {
 		dica6.setTema(logica.getTemaByNome("Lógica Proposicional (LP)"));
 		dica6.setUser("usuario8");
 		logica.getTemaByNome("Lógica Proposicional (LP)").addDica(dica6);
-
+		dica6.incrementaConcordancias();
+		dica6.incrementaConcordancias();
+		
 		dao.persist(si1);
 		dao.persist(logica);
 		dao.persist(tc);
