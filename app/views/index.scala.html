@@ -17,17 +17,17 @@
     <body ng-app="">
   	
   	<!-- Script Jquery que vai acessar a div que mostra o resto das informacoes das dicas -->
- <script>
+    <script>
         $(document).ready(function(){
 			$(".uk-button").click(function(event){
  				var link = $(this); 
 				if(link.attr("id").match("btn1"))
  					$(this).parent().parent().parent().closest('div').find('.dica-expandir').toggle("slow");
  					$(this).find('.uk-icon-plus').toggleClass("uk-icon-minus");
- 		});
+ 		    });
  
-	})
-</script>
+	    })
+    </script>
     
         <div class="uk-container uk-container-center">
     		<div id="topo" class="uk-panel">
@@ -72,16 +72,32 @@
             			</div>
             			<p>Escolha uma disciplina ou tema ao lado para acessar os leites.</p>
             		</div>
-					<!-- dropdown para ordenar as dicas -->
-					<br>
-					<p><strong>Ordenar por:</strong>   <a href="#">Últimos  </a>	  
-					<a href="#">Mais votados  </a><i class="uk-icon-hover uk-icon-thumbs-up uk-text-success"></i>   
-					<a href="#">Menos votados  </a><i class="uk-icon-hover uk-icon-thumbs-down" style="color:red"></i></p>
-  					<br>
 				
 					<div class="uk-panel uk-panel-box">
-						
-						<h2>Últimas 10 dicas enviadas</h2>
+
+                            <!-- BOTÃO PARA ESCOLHA DA TIMELINE A SER MOSTRADA -->
+                        <div class="uk-button-dropdown uk-align-right" data-uk-dropdown="{mode:'click'}">
+                            <button class="uk-button uk-button-small uk-align-right"> Exibir...
+                                <i class="uk-icon-caret-down"></i>
+                            </button>
+                            <div class="uk-dropdown">
+                                <ul class="uk-nav uk-nav-dropdown uk-text-center">
+                                    <li><a onclick="document.getElementById('timeline').innerHTML = 'As últimas 10 dicas enviadas'">
+                                        Últimas dicas</a>
+                                    </li>
+
+                                    <li><a onclick="document.getElementById('timeline').innerHTML = 'As 10 dicas mais bem votadas'">
+                                        Mais bem votadas</a>
+                                    </li>
+
+                                    <li><a onclick="document.getElementById('timeline').innerHTML = 'As 10 dicas com mais discordâncias'">
+                                        Mais discordâncias</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h2 id="timeline" data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}">As últimas 10 dicas enviadas</h2>
 						<hr class="uk-article-divider">
 					
 				<!-- gerando as dicas na timeline -->
@@ -99,9 +115,8 @@
 												</a>
 														 <!--Aqui eu tive de editar o botao para tirar a tela suspensa -->
 												<div class="uk-button-dropdown uk-align-right">
-													<button id="btn1" class="uk-button uk-button-primary uk-button uk-align-right"><i class="uk-icon-plus"></i>
+													<button id="btn1" class="uk-button uk-button-primary uk-align-right"><i class="uk-icon-plus"></i>
 														detalhes
-														
 													</button>
 													
 												</div>
@@ -125,14 +140,12 @@
 										<!-- parte que ira ser mostrada ao clicar do botao +detalhes -->
 										<div class="dica-expandir" style="display: none;">
 											<hr class="uk-article-divider-orange">
-											
-										
+
 										<!-- exemplo de como acessar as classes acima de dica @dica.getTema().getDisciplina().getNome()<br> -->
-											Curtidas: <i class="uk-icon-hover uk-icon-thumbs-up uk-text-success"></i> @dica.getConcordancias()<br>
-											Não Curtidas: <i class="uk-icon-hover uk-icon-thumbs-down" style="color:red"></i> @dica.getDiscordancias()<br>
+											Curtidas <i class="uk-icon-hover uk-icon-thumbs-up uk-text-success"></i>: @dica.getConcordancias()<br>
+											Discordâncias <i class="uk-icon-hover uk-icon-thumbs-down" style="color:red"></i>: @dica.getDiscordancias()<br>
 											Avaliação da dica: @dica.getIndiceConcordancia()
-		            						
-											
+
 										</div>
 
 										<p class="uk-article-meta uk-text-right">por @dica.getUser()</p>
@@ -141,8 +154,7 @@
 									@(i += 1)
 						}
 					}
-					
-					
+
 					</div><br>
 				</div>
 					<!-- ---------------- USUARIOS ---------------- -->
@@ -163,6 +175,5 @@
 
             </div>
         </div>
-        
     </body>
 </html>
