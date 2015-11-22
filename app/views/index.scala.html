@@ -1,4 +1,4 @@
-@(disciplinas: List[Disciplina])(usuarios: List[User])(dicas: List[Dica])
+@(disciplinas: List[Disciplina])(usuarios: List[User])(dicas: List[Dica])(message: String)
 @import java.math.BigInteger; var i=0
 
 <!DOCTYPE html>
@@ -75,31 +75,34 @@
 				
 					<div class="uk-panel uk-panel-box">
 
-                            <!-- BOTÃO PARA ESCOLHA DA TIMELINE A SER MOSTRADA -->
-                        <form class="uk-form center" method="post" action="/ordenarDicas"> 
-                      <!--  <div class="uk-button-dropdown uk-align-right" data-uk-dropdown="{mode:'click'}"> -->
-                            
-                          <!--  <form action="@routes.Application.ordernarDicas()" method="post"> -->
-							          
-                            <div class="uk-form-select" data-uk-form-select>
-   							 <span>algo</span>
-   							 <select name="ordenar">
-      						  <option value="ultimas">Ultimas</option>
-      						  <option value="maisVotados">Mais votadas</option>
-      						  <option value="menosVotados">Menos votadas</option>
-    						</select>
-							</div>
-                             
-                         <button class="uk-button uk-button-small uk-align-right">  Ordenar  </button>
-                            
-                            
-                            </form>
-                        
-                        
-                        
-                      
+						<!-- BOTÃO PARA ESCOLHA DA TIMELINE A SER MOSTRADA -->
+						<form class="uk-form left" method="post" action="/ordenarDicas">
 
-                        <h2 id="timeline" data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}">As últimas 10 dicas enviadas</h2>
+								<select name="ordenar">
+
+									<div class="uk-dropdown">
+										<ul class="uk-nav uk-nav-dropdown uk-text-center">
+											<li><option >Selecione um tipo de ordenação</option></li>
+											<li>
+												<option value="ultimas">Últimas dicas</option>
+											</li>
+
+											<li>
+												<option value="maisVotados">Mais bem votadas</option>
+											</li>
+
+											<li>
+												<option value="menosVotados">Mais discordâncias</option>
+											</li>
+										</ul>
+									</div>
+								</select>
+
+                    		<button class="uk-button uk-button-large uk-align-right">Ordenar</button>
+                            
+						</form>
+
+                        <h2 data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}">@message</h2>
 						<hr class="uk-article-divider">
 					
 				<!-- gerando as dicas na timeline -->
@@ -115,10 +118,10 @@
 												<a class="uk-article-meta uk-text-success">
 													Tema: <strong>"@dica.getTema.getName()"</strong>
 												</a>
-														 <!--Aqui eu tive de editar o botao para tirar a tela suspensa -->
+
 												<div class="uk-button-dropdown uk-align-right">
-													<button id="btn1" class="uk-button uk-button-primary uk-align-right"><i class="uk-icon-plus"></i>
-														detalhes
+													<button id="btn1" class="uk-button uk-button-primary uk-align-right">
+														<i class="uk-icon-plus"></i> detalhes
 													</button>
 													
 												</div>

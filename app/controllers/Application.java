@@ -26,7 +26,7 @@ public class Application extends Controller {
 		List<Disciplina> disciplinas = dao.findAllByClassName(Disciplina.class.getName());
 		List<User> usuarios = dao.findAllByClassName(User.class.getName());	
 		List<Dica> dicas = dao.findAllByClassName(Dica.class.getName());	
-        return ok(views.html.index.render(disciplinas, usuarios, dicas));
+        return ok(views.html.index.render(disciplinas, usuarios, dicas, "As últimas 10 dicas enviadas"));
     }
 	
 	@Transactional
@@ -403,7 +403,7 @@ public class Application extends Controller {
 		
 		if(requestPesquisa.get("ordenar").equals("ultimas")){
 		
-			return ok(views.html.index.render(disciplinas, usuarios, dicas));
+			return ok(views.html.index.render(disciplinas, usuarios, dicas, "As últimas 10 dicas enviadas"));
 					
 		}else if(requestPesquisa.get("ordenar").equals("menosVotados")){
 			
@@ -411,7 +411,7 @@ public class Application extends Controller {
 			
 				Collections.sort(dicasMenosVotadas);
 			
-			return ok(views.html.index.render(disciplinas, usuarios, dicasMenosVotadas));
+			return ok(views.html.index.render(disciplinas, usuarios, dicasMenosVotadas, "As 10 dicas com mais discordâncias"));
 			
 		}else if(requestPesquisa.get("ordenar").equals("maisVotados")){
 			
@@ -421,7 +421,7 @@ public class Application extends Controller {
 				Collections.reverse(dicasMaisVotadas);
 				
 			
-			return ok(views.html.index.render(disciplinas, usuarios, dicasMaisVotadas));
+			return ok(views.html.index.render(disciplinas, usuarios, dicasMaisVotadas, "As 10 dicas mais bem votadas"));
 			
 		}
 		
@@ -429,7 +429,7 @@ public class Application extends Controller {
 		//List<User> user1 = new ArrayList<>();
 		//List<Dica> dica1 = new ArrayList<>();
 		
-		return ok(views.html.index.render(disciplinas, usuarios, dicas));
+		return ok(views.html.index.render(disciplinas, usuarios, dicas, "As últimas 10 dicas enviadas"));
 		
 		
 	}
