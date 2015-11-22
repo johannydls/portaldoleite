@@ -1,6 +1,8 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -388,4 +390,49 @@ public class Application extends Controller {
 		
 		return redirect(routes.Application.disciplina(metaDica.getDisciplina().getId()));
 	}
+	
+	@Transactional
+	@Security.Authenticated(Secured.class)
+	public static Result ordernarDicas(){
+		
+		DynamicForm requestPesquisa = Form.form().bindFromRequest();	
+		
+		List<Disciplina> disciplinas = dao.findAllByClassName(Disciplina.class.getName());
+		List<User> usuarios = dao.findAllByClassName(User.class.getName());	
+		List<Dica> dicas = dao.findAllByClassName(Dica.class.getName());
+		
+		if(requestPesquisa.get("ordenar").equals("ultimas")){
+		
+			return ok(views.html.index.render(disciplinas, usuarios, dicas));
+					
+		}else if(requestPesquisa.get("ordenar").equals("menosVotados")){
+			
+			List<Dica> dicasMenosVotadas = dicas;
+			
+				Collections.sort(dicasMenosVotadas);
+			
+			return ok(views.html.index.render(disciplinas, usuarios, dicasMenosVotadas));
+			
+		}else if(requestPesquisa.get("ordenar").equals("maisVotados")){
+			
+			List<Dica> dicasMaisVotadas = dicas;
+			
+				Collections.sort(dicasMaisVotadas);
+				Collections.reverse(dicasMaisVotadas);
+				
+			
+			return ok(views.html.index.render(disciplinas, usuarios, dicasMaisVotadas));
+			
+		}
+		
+		//List<Disciplina> disciplinas1 = new ArrayList<>();
+		//List<User> user1 = new ArrayList<>();
+		//List<Dica> dica1 = new ArrayList<>();
+		
+		return ok(views.html.index.render(disciplinas, usuarios, dicas));
+		
+		
+	}
+	
+	
 }

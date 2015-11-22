@@ -76,26 +76,28 @@
 					<div class="uk-panel uk-panel-box">
 
                             <!-- BOTÃO PARA ESCOLHA DA TIMELINE A SER MOSTRADA -->
-                        <div class="uk-button-dropdown uk-align-right" data-uk-dropdown="{mode:'click'}">
-                            <button class="uk-button uk-button-small uk-align-right"> Exibir...
-                                <i class="uk-icon-caret-down"></i>
-                            </button>
-                            <div class="uk-dropdown">
-                                <ul class="uk-nav uk-nav-dropdown uk-text-center">
-                                    <li><a onclick="document.getElementById('timeline').innerHTML = 'As últimas 10 dicas enviadas'">
-                                        Últimas dicas</a>
-                                    </li>
-
-                                    <li><a onclick="document.getElementById('timeline').innerHTML = 'As 10 dicas mais bem votadas'">
-                                        Mais bem votadas</a>
-                                    </li>
-
-                                    <li><a onclick="document.getElementById('timeline').innerHTML = 'As 10 dicas com mais discordâncias'">
-                                        Mais discordâncias</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <form class="uk-form center" method="post" action="/ordenarDicas"> 
+                      <!--  <div class="uk-button-dropdown uk-align-right" data-uk-dropdown="{mode:'click'}"> -->
+                            
+                          <!--  <form action="@routes.Application.ordernarDicas()" method="post"> -->
+							          
+                            <div class="uk-form-select" data-uk-form-select>
+   							 <span>algo</span>
+   							 <select name="ordenar">
+      						  <option value="ultimas">Ultimas</option>
+      						  <option value="maisVotados">Mais votadas</option>
+      						  <option value="menosVotados">Menos votadas</option>
+    						</select>
+							</div>
+                             
+                         <button class="uk-button uk-button-small uk-align-right">  Ordenar  </button>
+                            
+                            
+                            </form>
+                        
+                        
+                        
+                      
 
                         <h2 id="timeline" data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}">As últimas 10 dicas enviadas</h2>
 						<hr class="uk-article-divider">

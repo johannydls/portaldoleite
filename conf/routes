@@ -25,6 +25,7 @@ POST 	/addDiscordancia/:id			 controllers.Application.addDiscordanciaEmDica(id: 
 POST 	/upVoteDica/:id					 controllers.Application.upVoteDica(id: Long)
 POST 	/upVoteMetaDica/:id				 controllers.Application.upVoteMetaDica(id: Long)
 POST 	/addDiscordanciaMeta/:id		 controllers.Application.addDiscordanciaEmMetaDica(id: Long)
+POST 	/ordenarDicas 			 controllers.Application.ordernarDicas()
 
 POST    /cadastrarMetaDica/:id           controllers.Application.cadastrarMetaDica(id: Long)
 
