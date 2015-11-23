@@ -409,7 +409,8 @@ public class Application extends Controller {
 			
 			List<Dica> dicasMenosVotadas = dicas;
 			
-				Collections.sort(dicasMenosVotadas);
+				Collections.sort(dicasMenosVotadas, new DicaDiscordanciaComparator());
+				Collections.reverse(dicasMenosVotadas);
 			
 			return ok(views.html.index.render(disciplinas, usuarios, dicasMenosVotadas, "As 10 dicas com mais discordâncias"));
 			
