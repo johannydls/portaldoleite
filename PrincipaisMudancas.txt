@@ -1,7 +1,19 @@
-﻿
+﻿				     PADRÕES
+=======================================||=======================================
 
+Adicionando padrão Iterator em Dicas.				    
+
+
+
+
+
+
+				    DETALHES
 =======================================||=======================================
 Adição das Disciplinas e temas
 Cadastro dos usuários
 Adição das dicas
 Dicas e usuarios na front-end
+Adicionando votos
+Adicionando ordenações
+Adicionando padrão Iterator em Dicas
