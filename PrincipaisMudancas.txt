@@ -17,3 +17,4 @@ Dicas e usuarios na front-end
 Adicionando votos
 Adicionando ordenações
 Adicionando padrão Iterator em Dicas
+Aplicando Comparator em Dicas
