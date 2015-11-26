@@ -205,6 +205,8 @@ public class Global extends GlobalSettings {
 		dica1.setConselho("Faça uma revisão no seu material de P2.");
 		dica1.setUser("Usuario 1");
 		si1.getTemaByNome("Orientação a objetos").addDica(dica1);
+		dica1.incrementaConcordancias();
+		dica1.incrementaConcordancias();
 
 		DicaAssunto dica2 = new DicaAssunto();
 		dica2.setTema(si1.getTemaByNome("Play"));

@@ -2,8 +2,8 @@ package models;
 
 public class DicaIterator implements Iterator{
 
-	Dica[] dicaList;
-	int posicao = 0;
+	private Dica[] dicaList;
+	private int posicao = 0;
 	
 	public DicaIterator(Dica[] dicaList) {
 

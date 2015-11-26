@@ -409,8 +409,8 @@ public class Application extends Controller {
 			
 			List<Dica> dicasMenosVotadas = dicas;
 			
-				Collections.sort(dicasMenosVotadas, new DicaDiscordanciaComparator());
-				Collections.reverse(dicasMenosVotadas);
+			Collections.sort(dicasMenosVotadas, new DicaDiscordanciaComparator());
+			Collections.reverse(dicasMenosVotadas);
 			
 			return ok(views.html.index.render(disciplinas, usuarios, dicasMenosVotadas, "As 10 dicas com mais discordâncias"));
 			
@@ -418,11 +418,18 @@ public class Application extends Controller {
 			
 			List<Dica> dicasMaisVotadas = dicas;
 			
-				Collections.sort(dicasMaisVotadas);
-				Collections.reverse(dicasMaisVotadas);
+			Collections.sort(dicasMaisVotadas);
+			Collections.reverse(dicasMaisVotadas);
 
 			return ok(views.html.index.render(disciplinas, usuarios, dicasMaisVotadas, "As 10 dicas mais bem votadas"));
 			
+		} else if (requestPesquisa.get("ordenar").equals("maisBemAvaliadas")) {
+			List<Dica> dicasMaisBemAvaliadas = dicas;
+
+			Collections.sort(dicasMaisBemAvaliadas, new DicaBemAvaliadaComparator());
+			Collections.reverse(dicasMaisBemAvaliadas);
+
+			return ok(views.html.index.render(disciplinas, usuarios, dicasMaisBemAvaliadas, "As 10 dicas mais bem avaliadas"));
 		}
 		
 		return ok(views.html.index.render(disciplinas, usuarios, dicas, "As últimas 10 dicas enviadas"));

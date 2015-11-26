@@ -1,7 +1,7 @@
 ﻿				     PADRÕES
 =======================================||=======================================
-
-Adicionando padrão Iterator em Dicas.				    
+Adicionando padrão Iterator em Dicas, Disciplina;
+Adicionando padrão Iterator em Disciplina;
 
 
 
@@ -10,11 +10,14 @@ Adicionando padrão Iterator em Dicas.
 
 				    DETALHES
 =======================================||=======================================
-Adição das Disciplinas e temas
-Cadastro dos usuários
-Adição das dicas
-Dicas e usuarios na front-end
-Adicionando votos
-Adicionando ordenações
+Adição das Disciplinas e Temas no Global.java
+Cadastro dos usuários no Global.java
+Adição das dicas no Global.java
+Dicas e Usuarios na front-end (mostrados na Timeline)
+Adicionando votos no Global.java
+Adicionando ordenações (últimas dicas, mais votadas, mais discordadas)
 Adicionando padrão Iterator em Dicas
 Aplicando Comparator em Dicas
+Adicionando padrão Iterator em Disciplina
+Adicionado mais um tipo de ordenação
+Adicionado link para ir direto ao tema para curtir, discordar, etc.
