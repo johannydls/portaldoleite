@@ -194,7 +194,7 @@ public class Global extends GlobalSettings {
 		DicaConselho dica = new DicaConselho();
 		dica.setTema(si1.getTemaByNome("Análise x Design"));
 		dica.setConselho("Procure sempre fazer uma avaliação");
-		dica.setUser("usuario0");
+		dica.setUser("Usuario 7");
 		si1.getTemaByNome("Análise x Design").addDica(dica);
 		dica.incrementaConcordancias();
 		dica.incrementaConcordancias();
@@ -203,28 +203,28 @@ public class Global extends GlobalSettings {
 		DicaConselho dica1 = new DicaConselho();
 		dica1.setTema(si1.getTemaByNome("Orientação a objetos"));
 		dica1.setConselho("Faça uma revisão no seu material de P2.");
-		dica1.setUser("usuario1");
+		dica1.setUser("Usuario 1");
 		si1.getTemaByNome("Orientação a objetos").addDica(dica1);
 
 		DicaAssunto dica2 = new DicaAssunto();
 		dica2.setTema(si1.getTemaByNome("Play"));
 		dica2.setAssunto("Não importa o que faça ou quanto estude, você vai sofrer aqui. " +
 				"Não existem muitos materiais para aprender o Play, mas comece com a documentação");
-		dica2.setUser("usuario2");
+		dica2.setUser("Usuario 2");
 		si1.getTemaByNome("Play").addDica(dica2);
 		dica2.incrementaConcordancias();
 
 		DicaConselho dica3 = new DicaConselho();
 		dica3.setTema(si1.getTemaByNome("Labs"));
 		dica3.setConselho("Faça o máximo que puder aqui, envie tudo, mesmo que você ache que não irá valer nada.");
-		dica3.setUser("usuario3");
+		dica3.setUser("Usuario 3");
 		si1.getTemaByNome("Labs").addDica(dica3);
 		dica3.incrementaDiscordancias();
 
 		DicaMaterial dica4 = new DicaMaterial();
 		dica4.setTema(si1.getTemaByNome("GoF"));
 		dica4.setUrl("http://www.tutorialspoint.com/design_pattern/index.htm");
-		dica4.setUser("usuario5");
+		dica4.setUser("Usuario 5");
 		si1.getTemaByNome("GoF").addDica(dica4);
 		dica4.incrementaConcordancias();
 		dica4.incrementaConcordancias();
@@ -234,7 +234,7 @@ public class Global extends GlobalSettings {
 		DicaConselho dica5 = new DicaConselho();
 		dica5.setTema(logica.getTemaByNome("Alloy"));
 		dica5.setConselho("Parece fácil, mas não é. Lembre-se de fazer tudo pensando no Time!");
-		dica5.setUser("usuario4");
+		dica5.setUser("Usuario 4");
 		logica.getTemaByNome("Alloy").addDica(dica5);
 		dica5.incrementaDiscordancias();
 		dica5.incrementaDiscordancias();
@@ -244,7 +244,7 @@ public class Global extends GlobalSettings {
 		dica6.setRazao("Essa disciplina aborda algumas partes da lógica proposicional e de predicados. " +
 				"Vale a pena dar uma revisada nos materiais de Matemática Discreta.");
 		dica6.setTema(logica.getTemaByNome("Lógica Proposicional (LP)"));
-		dica6.setUser("usuario8");
+		dica6.setUser("Usuario 8");
 		logica.getTemaByNome("Lógica Proposicional (LP)").addDica(dica6);
 		dica6.incrementaConcordancias();
 		dica6.incrementaConcordancias();

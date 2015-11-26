@@ -420,15 +420,10 @@ public class Application extends Controller {
 			
 				Collections.sort(dicasMaisVotadas);
 				Collections.reverse(dicasMaisVotadas);
-				
-			
+
 			return ok(views.html.index.render(disciplinas, usuarios, dicasMaisVotadas, "As 10 dicas mais bem votadas"));
 			
 		}
-		
-		//List<Disciplina> disciplinas1 = new ArrayList<>();
-		//List<User> user1 = new ArrayList<>();
-		//List<Dica> dica1 = new ArrayList<>();
 		
 		return ok(views.html.index.render(disciplinas, usuarios, dicas, "As últimas 10 dicas enviadas"));
 		
